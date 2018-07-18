@@ -146,7 +146,33 @@ patientApi.fetchAll({type: 'Encounter'}).then(function(response) {
 //				}
 			});			
 //---
-			
+//----
+patientApi.fetchAll(
+	{
+		type: 'Observation',
+		query: {
+			category:{
+				$or:["vital-signs"]
+			}
+		}
+	}	
+	.then(function(response) {
+				console.log(response);
+				response = response[0];
+	
+				//$("#demo-fin").html((response.name && response.name.length && response.name[0].text)?response.name[0].text:"Unknown");
+//				$("#demo-loc").html((response.gender)?response.gender.substr(0,1).toUpperCase():"Unknown");
+//				$("#demo-rfv").html((response.birthDate)?new Date(response.birthDate).formatString("longdate"):"&nbsp;");
+				//$("#demo-age").innerHTML = "";
+//				if (response.identifier && response.identifier.length) {
+//					response.identifier.forEach(function(obj,idx){
+//						if (obj.system === "urn:oid:1.1.1.1.1.1") {
+//							$("#demo-mrn").html(obj.value);
+//						}
+//					});
+//				}
+			});			
+//---			
 		}
 	}
 	function notReady(response) {
